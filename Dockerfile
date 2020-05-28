@@ -268,7 +268,6 @@ RUN cd / && git clone https://github.com/sctplab/usrsctp.git && cd /usrsctp && \
 WORKDIR /tmp
 RUN git clone https://git.gnunet.org/libmicrohttpd.git
 WORKDIR /tmp/libmicrohttpd
-RUN git checkout v0.9.60
 RUN autoreconf -fi
 RUN ./configure
 RUN make && make install
