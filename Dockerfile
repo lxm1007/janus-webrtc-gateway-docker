@@ -18,6 +18,7 @@ RUN apt-get -y update && apt-get install -y \
     pkg-config \
     gengetopt \
     libtool \
+    autopoint \
     automake \
     build-essential \
     subversion \
@@ -268,7 +269,8 @@ RUN cd / && git clone https://github.com/sctplab/usrsctp.git && cd /usrsctp && \
 WORKDIR /tmp
 RUN git clone https://git.gnunet.org/libmicrohttpd.git
 WORKDIR /tmp/libmicrohttpd
-RUN autoreconf -fi
+RUN git checkout v0.9.60
+#RUN autoreconf -fi
 RUN ./configure
 RUN make && make install
 
@@ -323,11 +325,3 @@ RUN npm -v
 
 
 CMD nginx && janus
-
-# RUN apt-get -y install iperf iperf3
-# RUN git clone https://github.com/HewlettPackard/netperf.git && \
-#     cd netperf && \
-#     bash autogen.sh && \
-#     ./configure && \
-#     make && \
-#     make install
